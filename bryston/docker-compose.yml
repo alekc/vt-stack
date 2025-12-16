@@ -13,7 +13,7 @@ services:
       - "traefik.http.routers.lms.entrypoints=websecure"
       - "traefik.http.routers.lms.tls=true"
       - "traefik.http.routers.lms.tls.certresolver=myresolver"
-      - "traefik.http.services.lms.loadbalancer.server.port=8686"
+      - "traefik.http.services.lms.loadbalancer.server.port=9000"
       - "traefik.docker.network=gw_proxy"
       - "traefik.http.routers.lms.middlewares=authelia@docker"
       - "com.centurylinklabs.watchtower.enable=true"
