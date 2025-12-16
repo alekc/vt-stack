@@ -44,7 +44,6 @@ services:
       # ALSA PARAMS for Audiophile Quality
       # 80ms buffer, 4 periods, 32-bit format (Bryston supports 32-bit via USB)
       - SQUEEZELITE_BUFFER_SIZE=80:4:32:1
-      - SQUEEZELITE_ALSA_PARAMS=80:4:32:1
       - SQUEEZELITE_MIXER_DEVICE=null
 
       # OPTIONAL: Exclude codecs to force LMS to decode (lowers CPU on player)
