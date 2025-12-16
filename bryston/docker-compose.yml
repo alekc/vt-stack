@@ -38,9 +38,9 @@ services:
       - /dev/snd:/dev/snd
     environment:
       - SQUEEZELITE_NAME=Bryston_BDA2
-      - SQUEEZELITE_OUTPUT_DEVICE=hw:CARD=B20,DEV=0
-      - SQUEEZELITE_SERVER_ADDRESS=lms
-
+      - SQUEEZELITE_AUDIO_DEVICE=hw:CARD=B20,DEV=0ms (-a)
+      - SQUEEZELITE_PARAMS=80:4:32:1 for Server Address (-s)vice name on port 3483 (SlimProto)
+      - SQUEEZELITE_SERVER_PORT=lms:3483
       # ALSA PARAMS for Audiophile Quality
       # 80ms buffer, 4 periods, 32-bit format (Bryston supports 32-bit via USB)
       - SQUEEZELITE_ALSA_PARAMS=80:4:32:1
