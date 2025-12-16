@@ -38,7 +38,7 @@ services:
       - /dev/snd:/dev/snd
     environment:
       - SQUEEZELITE_NAME=Bryston_BDA2
-      - SQUEEZELITE_AUDIO_DEVICE=hw:CARD=B20,DEV=0ms (-a)
+      - SQUEEZELITE_AUDIO_DEVICE=hw:CARD=B20,DEV=0
       - SQUEEZELITE_PARAMS=80:4:32:1 for Server Address (-s)vice name on port 3483 (SlimProto)
       - SQUEEZELITE_SERVER_PORT=lms:3483
       # ALSA PARAMS for Audiophile Quality
