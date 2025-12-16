@@ -4,7 +4,17 @@ services:
     image: lmscommunity/lyrionmusicserver:stable
     container_name: lyrion-server
     restart: unless-stopped
-    network_mode: host  # Critical for player discovery
+    networks:
+      - gw_proxy
+    labels:
+      - "traefik.http.routers.lms.rule=Host(`lms.${UPSTREAM_DOMAIN:?err}`)"
+      - "traefik.http.routers.lms.entrypoints=websecure"
+      - "traefik.http.routers.lms.tls=true"
+      - "traefik.http.routers.lms.tls.certresolver=myresolver"
+      - "traefik.http.services.lms.loadbalancer.server.port=8686"
+      - "traefik.docker.network=gw_proxy"
+      - "traefik.http.routers.lms.middlewares=authelia@docker"
+      - "com.centurylinklabs.watchtower.enable=true"
     environment:
       - PUID=1000
       - PGID=1000
@@ -33,3 +43,7 @@ services:
 
       # OPTIONAL: Exclude codecs to force LMS to decode (lowers CPU on player)
       # - SQUEEZELITE_EXCLUDE_CODECS=
+
+networks:
+  gw_proxy:
+    external: true
