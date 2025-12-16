@@ -1,0 +1,35 @@
+services:
+  # Service 1: Lyrion Music Server (formerly Logitech Media Server)
+  lms:
+    image: lmscommunity/lyrionmusicserver:stable
+    container_name: lyrion-server
+    restart: unless-stopped
+    network_mode: host  # Critical for player discovery
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /docker-data/lms/config:/config:rw
+      - /docker-data/lms/playlist:/playlist:rw
+      - /big/music:/music:ro
+
+  # Service 2: Squeezelite (Player)
+  squeezelite:
+    image: giof71/squeezelite:stable
+    container_name: squeezelite-bryston
+    restart: unless-stopped
+    network_mode: host
+    privileged: true
+    devices:
+      - /dev/snd:/dev/snd
+    environment:
+      - SQUEEZELITE_NAME=Bryston_BDA2
+      - SQUEEZELITE_OUTPUT_DEVICE=hw:CARD=B20,DEV=0
+
+      # ALSA PARAMS for Audiophile Quality
+      # 80ms buffer, 4 periods, 32-bit format (Bryston supports 32-bit via USB)
+      - SQUEEZELITE_ALSA_PARAMS=80:4:32:1
+
+      # OPTIONAL: Exclude codecs to force LMS to decode (lowers CPU on player)
+      # - SQUEEZELITE_EXCLUDE_CODECS=
