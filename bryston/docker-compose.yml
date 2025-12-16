@@ -6,7 +6,9 @@ services:
     restart: unless-stopped
     networks:
       - gw_proxy
+      - lms_network
     labels:
+      - "traefik.enable=true"
       - "traefik.http.routers.lms.rule=Host(`lms.${UPSTREAM_DOMAIN:?err}`)"
       - "traefik.http.routers.lms.entrypoints=websecure"
       - "traefik.http.routers.lms.tls=true"
@@ -29,7 +31,8 @@ services:
     image: giof71/squeezelite:stable
     container_name: squeezelite-bryston
     restart: unless-stopped
-    network_mode: host
+    networks:
+      - lms_network
     privileged: true
     devices:
       - /dev/snd:/dev/snd
@@ -47,3 +50,4 @@ services:
 networks:
   gw_proxy:
     external: true
+  lms_network:
