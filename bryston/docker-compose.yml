@@ -47,9 +47,7 @@ services:
       - SQUEEZELITE_SERVER_PORT=lms:3483
       - SQUEEZELITE_RATES=44100,48000,88200,96000,176400,192000
       - SQUEEZELITE_CODECS=flac,pcm
-      # ALSA PARAMS for Audiophile Quality
-      # 80ms buffer, 4 periods, 32-bit format (Bryston supports 32-bit via USB)
-      - SQUEEZELITE_ALSA_PARAMS=80:4:32:1
+      - SQUEEZELITE_PARAMS=80:4:32:1
       - SQUEEZELITE_BUFFER_SIZE=20000:50000
       - SQUEEZELITE_MIXER_DEVICE=null
       - SQUEEZELITE_PARAMS=-X
