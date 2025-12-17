@@ -21,6 +21,11 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London
+    ports:
+      - "9000:9000"
+      - "3483:3483"
+      - "3483:3483/udp"
+      - "9090:9090"
     volumes:
       - /docker-data/lms/config:/config:rw
       - /docker-data/lms/playlist:/playlist:rw
