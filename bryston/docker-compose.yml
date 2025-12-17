@@ -47,6 +47,8 @@ services:
       # - SQUEEZELITE_ALSA_PARAMS=80:4:32:1
       - SQUEEZELITE_BUFFER_SIZE=2048:3446
       - SQUEEZELITE_MIXER_DEVICE=null
+      - SQUEEZELITE_PARAMS=-X
+      - SQUEEZELITE_MAC_ADDRESS=02:00:00:00:00:01
 
       # OPTIONAL: Exclude codecs to force LMS to decode (lowers CPU on player)
       # - SQUEEZELITE_EXCLUDE_CODECS=
