@@ -51,6 +51,7 @@ services:
       - SQUEEZELITE_BUFFER_SIZE=20000:50000
       - SQUEEZELITE_MIXER_DEVICE=null
       - SQUEEZELITE_MAC_ADDRESS=02:00:00:00:00:01
+      - LMS_HOSTNAME=lms.vt.alekc.dev
 
       # OPTIONAL: Exclude codecs to force LMS to decode (lowers CPU on player)
       # - SQUEEZELITE_EXCLUDE_CODECS=
