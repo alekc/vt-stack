@@ -21,6 +21,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London
+      - LMS_HOSTNAME=lms.vt.alekc.dev
     # ports:
     #   - "9000:9000"
     #   - "3483:3483"
